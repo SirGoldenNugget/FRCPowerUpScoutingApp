@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="6dip">
+
+    <TextView
+        android:id="@+id/teamTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Team: "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/switchTotalTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/teamTextView"
+        android:layout_below="@+id/teamTextView"
+        android:text="Switch Total: "
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/switchTotalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/switchTotalTitleTextView"
+        android:layout_alignBottom="@+id/switchTotalTitleTextView"
+        android:layout_toEndOf="@+id/switchTotalTitleTextView"
+        android:layout_toRightOf="@+id/switchTotalTitleTextView"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/scaleTotalTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/switchTotalTitleTextView"
+        android:layout_below="@+id/switchTotalTitleTextView"
+        android:text="Scale Total: "
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/scaleTotalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/scaleTotalTitleTextView"
+        android:layout_alignBottom="@+id/scaleTotalTitleTextView"
+        android:layout_toEndOf="@+id/scaleTotalTitleTextView"
+        android:layout_toRightOf="@+id/scaleTotalTitleTextView"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/vaultTitleTotalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/scaleTotalTitleTextView"
+        android:layout_below="@+id/scaleTotalTitleTextView"
+        android:text="Vault Total: "
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/vaultTotalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/vaultTitleTotalTextView"
+        android:layout_alignBottom="@+id/vaultTitleTotalTextView"
+        android:layout_toEndOf="@+id/vaultTitleTotalTextView"
+        android:layout_toRightOf="@+id/vaultTitleTotalTextView"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/climbTitleTotalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/vaultTitleTotalTextView"
+        android:layout_below="@+id/vaultTitleTotalTextView"
+        android:text="Climb Total: "
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/climbTotalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/climbTitleTotalTextView"
+        android:layout_alignBottom="@+id/climbTitleTotalTextView"
+        android:layout_toEndOf="@+id/climbTitleTotalTextView"
+        android:layout_toRightOf="@+id/climbTitleTotalTextView"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/teamNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/teamTextView"
+        android:layout_alignBottom="@+id/teamTextView"
+        android:layout_toEndOf="@+id/teamTextView"
+        android:layout_toRightOf="@+id/teamTextView"
+        android:paddingLeft="5dp"
+        android:text="TextView"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/scaleAverageTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/scaleTotalTextView"
+        android:layout_alignBottom="@+id/scaleTotalTextView"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/scaleTotalTextView"
+        android:layout_toRightOf="@+id/scaleTotalTextView"
+        android:text="Scale Average:" />
+
+    <TextView
+        android:id="@+id/scaleAverageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/scaleAverageTitleTextView"
+        android:layout_alignBottom="@+id/scaleAverageTitleTextView"
+        android:layout_toEndOf="@+id/scaleAverageTitleTextView"
+        android:layout_toRightOf="@+id/scaleAverageTitleTextView"
+        android:paddingLeft="5dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/switchAverageTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/switchTotalTextView"
+        android:layout_alignBottom="@+id/switchTotalTextView"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/switchTotalTextView"
+        android:layout_toRightOf="@+id/switchTotalTextView"
+        android:text="Switch Average:" />
+
+    <TextView
+        android:id="@+id/switchAverageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/switchAverageTitleTextView"
+        android:layout_alignBottom="@+id/switchAverageTitleTextView"
+        android:layout_toEndOf="@+id/switchAverageTitleTextView"
+        android:layout_toRightOf="@+id/switchAverageTitleTextView"
+        android:paddingLeft="5dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/vaultAverageTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/vaultTotalTextView"
+        android:layout_alignBottom="@+id/vaultTotalTextView"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/vaultTotalTextView"
+        android:layout_toRightOf="@+id/vaultTotalTextView"
+        android:text="Vault Average:" />
+
+    <TextView
+        android:id="@+id/vaultAverageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/vaultAverageTitleTextView"
+        android:layout_alignBottom="@+id/vaultAverageTitleTextView"
+        android:layout_toEndOf="@+id/vaultAverageTitleTextView"
+        android:layout_toRightOf="@+id/vaultAverageTitleTextView"
+        android:paddingLeft="5dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/climbAverageTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/climbTotalTextView"
+        android:layout_alignBottom="@+id/climbTotalTextView"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/climbTotalTextView"
+        android:layout_toRightOf="@+id/climbTotalTextView"
+        android:text="Climb Average:" />
+
+    <TextView
+        android:id="@+id/climbAverageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/climbAverageTitleTextView"
+        android:layout_alignBottom="@+id/climbAverageTitleTextView"
+        android:layout_toEndOf="@+id/climbAverageTitleTextView"
+        android:layout_toRightOf="@+id/climbAverageTitleTextView"
+        android:paddingLeft="5dp"
+        android:text="TextView" />
+</RelativeLayout>
