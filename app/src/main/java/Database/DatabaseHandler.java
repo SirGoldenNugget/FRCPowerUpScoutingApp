@@ -18,7 +18,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String TABLE_TEAMS = "Teams";
     public static final String TABLE_MATCH = "Match";
 
-    // ROBOTS TABLE
+    // TEAMS TABLE
 
     public static final String KEY_TEAMNUMBER = "_id";
     public static final String KEY_SWITCHES_TOTAL = "switches_delivered_total";

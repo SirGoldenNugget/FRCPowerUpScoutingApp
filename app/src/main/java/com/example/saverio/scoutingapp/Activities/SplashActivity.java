@@ -7,24 +7,19 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.saverio.scoutingapp.R;
 
-
 public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-
         Thread timer = new Thread(){
 
             public void run()
             {
-
                 try
                 {
                     sleep(3000);
-
-
                 }
                 catch(InterruptedException e)
                 {
@@ -35,7 +30,6 @@ public class SplashActivity extends AppCompatActivity {
                 {
                     Intent openStartingPoint = new Intent("com.example.saverio.STARTINGPOINT");
                     startActivity(openStartingPoint);
-
                 }
             }
 
@@ -43,6 +37,7 @@ public class SplashActivity extends AppCompatActivity {
         };
         timer.start();
     }
+
     @Override
     protected void onPause() {
         super.onPause();
