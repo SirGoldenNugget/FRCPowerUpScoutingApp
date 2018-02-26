@@ -41,10 +41,49 @@ public class SingleTeamActivity extends AppCompatActivity {
 
         db = database.getReadableDatabase();
 
+        graphCubes();
         graphSwitches();
         graphScales();
         graphVaults();
         graphClimbs();
+    }
+
+    public void graphCubes() {
+        GraphView graph = (GraphView) findViewById(R.id.cubes_graph);
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + DatabaseHandler.TABLE_MATCH + " WHERE " + DatabaseHandler.KEY_TEAMNUMBER_MATCH + " = " + teamNumber, null);
+        Cursor cursor1 = db.rawQuery("SELECT MAX(match) AS matches_max FROM " + DatabaseHandler.TABLE_MATCH + " WHERE " + DatabaseHandler.KEY_TEAMNUMBER_MATCH + " = " + teamNumber, null);
+        cursor1.moveToFirst();
+        int max_match = cursor1.getInt(cursor1.getColumnIndex("matches_max"));
+
+        dataset = new DataPoint[max_match];
+
+        int counter = 0;
+
+        while (cursor.moveToNext()) {
+            int cubes = cursor.getInt(1) + cursor.getInt(2) + cursor.getInt(3);
+            int match = cursor.getInt(5);
+
+            dataset[counter] = new DataPoint(match, cubes);
+            counter++;
+        }
+
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dataset);
+        series.setDrawDataPoints(true);
+        series.setDataPointsRadius(6);
+
+        graph.getViewport().setYAxisBoundsManual(true);
+        graph.getViewport().setMinY(0);
+        graph.getViewport().setMaxY(10);
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setMinX(1);
+        graph.getViewport().setMaxX(8);
+        graph.getGridLabelRenderer().setNumVerticalLabels(11);
+        graph.getGridLabelRenderer().setNumHorizontalLabels(8);
+        graph.getViewport().setScrollable(false);
+        graph.setTitle("Cubes");
+        graph.setTitleTextSize(40f);
+        graph.addSeries(series);
     }
 
     public void graphSwitches() {
@@ -58,7 +97,6 @@ public class SingleTeamActivity extends AppCompatActivity {
         dataset = new DataPoint[max_match];
 
         int counter = 0;
-
 
         while (cursor.moveToNext()) {
             int switches = cursor.getInt(1);
@@ -74,11 +112,11 @@ public class SingleTeamActivity extends AppCompatActivity {
 
         graph.getViewport().setYAxisBoundsManual(true);
         graph.getViewport().setMinY(0);
-        graph.getViewport().setMaxY(10);
+        graph.getViewport().setMaxY(8);
         graph.getViewport().setXAxisBoundsManual(true);
         graph.getViewport().setMinX(1);
         graph.getViewport().setMaxX(8);
-        graph.getGridLabelRenderer().setNumVerticalLabels(11);
+        graph.getGridLabelRenderer().setNumVerticalLabels(9);
         graph.getGridLabelRenderer().setNumHorizontalLabels(8);
         graph.getViewport().setScrollable(false);
         graph.setTitle("Switches");
@@ -98,7 +136,6 @@ public class SingleTeamActivity extends AppCompatActivity {
 
         int counter = 0;
 
-
         while (cursor.moveToNext()) {
             int scales = cursor.getInt(2);
             int match = cursor.getInt(5);
@@ -113,11 +150,11 @@ public class SingleTeamActivity extends AppCompatActivity {
 
         graph.getViewport().setYAxisBoundsManual(true);
         graph.getViewport().setMinY(0);
-        graph.getViewport().setMaxY(10);
+        graph.getViewport().setMaxY(8);
         graph.getViewport().setXAxisBoundsManual(true);
         graph.getViewport().setMinX(1);
         graph.getViewport().setMaxX(8);
-        graph.getGridLabelRenderer().setNumVerticalLabels(11);
+        graph.getGridLabelRenderer().setNumVerticalLabels(9);
         graph.getGridLabelRenderer().setNumHorizontalLabels(8);
         graph.getViewport().setScrollable(false);
         graph.setTitle("Scales");
@@ -137,7 +174,6 @@ public class SingleTeamActivity extends AppCompatActivity {
 
         int counter = 0;
 
-
         while (cursor.moveToNext()) {
             int vaults = cursor.getInt(3);
             int match = cursor.getInt(5);
@@ -152,11 +188,11 @@ public class SingleTeamActivity extends AppCompatActivity {
 
         graph.getViewport().setYAxisBoundsManual(true);
         graph.getViewport().setMinY(0);
-        graph.getViewport().setMaxY(10);
+        graph.getViewport().setMaxY(8);
         graph.getViewport().setXAxisBoundsManual(true);
         graph.getViewport().setMinX(1);
         graph.getViewport().setMaxX(8);
-        graph.getGridLabelRenderer().setNumVerticalLabels(11);
+        graph.getGridLabelRenderer().setNumVerticalLabels(9);
         graph.getGridLabelRenderer().setNumHorizontalLabels(8);
         graph.getViewport().setScrollable(false);
         graph.setTitle("Vaults");
