@@ -7,16 +7,25 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     tools:context="com.example.saverio.scoutingapp.Activities.MainActivity">
+
     <Spinner
+        android:id="@+id/type_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp"
-        android:layout_alignParentRight="true"/>
+        android:layout_marginTop="5dp" />
 
-    <ListView android:id="@+id/teamList" android:layout_width="fill_parent"
+    <Spinner
+        android:id="@+id/average_total_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/type_spinner"
+        android:layout_toRightOf="@+id/type_spinner" />
+
+    <ListView
+        android:id="@+id/teamList"
+        android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="5dp"/>
+        android:layout_below="@id/type_spinner" />
 
 </RelativeLayout>

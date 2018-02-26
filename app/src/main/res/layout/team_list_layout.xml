@@ -15,11 +15,30 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/switchTotalTitleTextView"
+        android:id="@+id/cubesTitleTotalTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/teamTextView"
         android:layout_below="@+id/teamTextView"
+        android:text="Cubes Total: "
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/cubesTotalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cubesTitleTotalTextView"
+        android:layout_alignBottom="@+id/cubesTitleTotalTextView"
+        android:layout_toEndOf="@+id/cubesTitleTotalTextView"
+        android:layout_toRightOf="@+id/cubesTitleTotalTextView"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/switchTotalTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cubesTitleTotalTextView"
+        android:layout_below="@+id/cubesTitleTotalTextView"
         android:text="Switch Total: "
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -191,6 +210,29 @@
         android:layout_alignBottom="@+id/climbAverageTitleTextView"
         android:layout_toEndOf="@+id/climbAverageTitleTextView"
         android:layout_toRightOf="@+id/climbAverageTitleTextView"
+        android:paddingLeft="5dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/cubesAverageTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cubesTotalTextView"
+        android:layout_alignBottom="@+id/cubesTotalTextView"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/cubesTotalTextView"
+        android:layout_toRightOf="@+id/cubesTotalTextView"
+        android:text="Cubes Average:" />
+
+    <TextView
+        android:id="@+id/cubesAverageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cubesAverageTitleTextView"
+        android:layout_alignBottom="@+id/cubesAverageTitleTextView"
+        android:layout_toEndOf="@+id/cubesAverageTitleTextView"
+        android:layout_toRightOf="@+id/cubesAverageTitleTextView"
         android:paddingLeft="5dp"
         android:text="TextView" />
 </RelativeLayout>

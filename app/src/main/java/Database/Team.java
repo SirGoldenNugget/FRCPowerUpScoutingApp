@@ -19,40 +19,19 @@ public class Team {
         return teamNumber;
     }
 
-    public void setTeamNumber(int teamNumber) {
-        this.teamNumber = teamNumber;
-    }
-
     public int getSwitches() {
         return switches;
-    }
-
-    public void setSwitches(int switches) {
-        this.switches = switches;
     }
 
     public int getScales() {
         return scales;
     }
 
-    public void setScales(int scales) {
-        this.scales = scales;
-    }
-
     public int getVaults() {
         return vaults;
     }
 
-    public void setVaults() {
-        this.vaults = vaults;
-    }
-
     public int getClimbs() {
         return climbs;
-    }
-
-    public void setClimbs(int climbs)
-    {
-        this.climbs = climbs;
     }
 }

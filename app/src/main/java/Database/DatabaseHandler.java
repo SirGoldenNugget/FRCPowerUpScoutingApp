@@ -6,7 +6,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
     private SQLiteDatabase db = this.getWritableDatabase();
@@ -25,11 +24,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String KEY_SCALES_TOTAL = "scales_delivered_total";
     public static final String KEY_VAULTS_TOTAL = "vaults_delivered_total";
     public static final String KEY_CLIMBS_TOTAL = "climbs_delivered_total";
+    public static final String KEY_CUBES_TOTAL = "cubes_total";
     public static final String KEY_MATCH_TOTAL = "match_total";
     public static final String KEY_SWITCHES_AVERAGE = "switches_average";
     public static final String KEY_SCALES_AVERAGE = "scales_average";
     public static final String KEY_VAULTS_AVERAGE = "vaults_average";
     public static final String KEY_CLIMBS_AVERAGE = "climbs_average";
+    public static final String KEY_CUBES_AVERAGE = "cubes_average";
 
     // MATCH TABLE
 
@@ -53,11 +54,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 KEY_SCALES_TOTAL + " INTEGER," +
                 KEY_VAULTS_TOTAL + " INTEGER," +
                 KEY_CLIMBS_TOTAL + " INTEGER," +
+                KEY_CUBES_TOTAL + " INTEGER," +
                 KEY_MATCH_TOTAL + " INTEGER," +
                 KEY_SWITCHES_AVERAGE + " REAL," +
                 KEY_SCALES_AVERAGE + " REAL," +
                 KEY_VAULTS_AVERAGE + " REAL," +
-                KEY_CLIMBS_AVERAGE + " REAL" + ")";
+                KEY_CLIMBS_AVERAGE + " REAL," +
+                KEY_CUBES_AVERAGE + " REAL" + ")";
         db.execSQL(CREATE_TEAMS_TABLE);
         String CREATE_MATCH_TABLE = "CREATE TABLE " + TABLE_MATCH +
                 "(" + KEY_TEAMNUMBER_MATCH + " INTEGER," +
@@ -108,10 +111,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         double scales_average = cursor_scales_average.getDouble(cursor_scales_average.getColumnIndex("scales_average"));
         double vaults_average = cursor_vaults_average.getDouble(cursor_vaults_average.getColumnIndex("vaults_average"));
         double climbs_average = cursor_climbs_average.getDouble(cursor_climbs_average.getColumnIndex("climbs_average"));
+
         double switches_average_result = (double) Math.round(switches_average * 100d) / 100d;
         double scales_average_result = (double) Math.round(scales_average * 100d) / 100d;
         double vaults_average_result = (double) Math.round(vaults_average * 100d) / 100d;
         double climbs_average_result = (double) Math.round(climbs_average * 100d) / 100d;
+
+        int cubes_total = switches + scales + vaults;
+        double cubes_average = cubes_total / matches;
 
         ContentValues values = new ContentValues();
         values.put(KEY_TEAMNUMBER, teamNumber);
@@ -120,49 +127,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_VAULTS_TOTAL, vaults);
         values.put(KEY_CLIMBS_TOTAL, climbs);
         values.put(KEY_MATCH_TOTAL, matches);
+        values.put(KEY_CUBES_TOTAL, cubes_total);
         values.put(KEY_SWITCHES_AVERAGE, switches_average_result);
         values.put(KEY_SCALES_AVERAGE, scales_average_result);
         values.put(KEY_VAULTS_AVERAGE, vaults_average_result);
         values.put(KEY_CLIMBS_AVERAGE, climbs_average_result);
+        values.put(KEY_CUBES_AVERAGE, cubes_average);
 
         if (matches == 1) {
             db.insert(TABLE_TEAMS, null, values);
         } else {
             db.update(TABLE_TEAMS, values, "_id=" + teamNumber, null);
-        }
-    }
-
-    public void debugDatabase() {
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_TEAMS, null);
-
-        String colteamn = cursor.getColumnName(0);
-        String colswitch = cursor.getColumnName(1);
-        String colscales = cursor.getColumnName(2);
-        String colvaults = cursor.getColumnName(3);
-        String colclimbs = cursor.getColumnName(4);
-        String colmatch = cursor.getColumnName(5);
-
-        Log.d("DebugColName: ", colteamn);
-        Log.d("DebugColName: ", colswitch);
-        Log.d("DebugColName: ", colscales);
-        Log.d("DebugColName: ", colvaults);
-        Log.d("DebugColName: ", colclimbs);
-        Log.d("DebugColName: ", colmatch);
-
-        while (cursor.moveToNext()) {
-            int teamNumberVal = cursor.getInt(0);
-            int switchesVal = cursor.getInt(1);
-            int scalesVal = cursor.getInt(2);
-            int vaultsVal = cursor.getInt(3);
-            int climbsVal = cursor.getInt(4);
-            int matchVal = cursor.getInt(5);
-
-            Log.d("DebugVal: ", "" + teamNumberVal);
-            Log.d("DebugVal: ", "" + switchesVal);
-            Log.d("DebugVal: ", "" + scalesVal);
-            Log.d("DebugVal: ", "" + vaultsVal);
-            Log.d("DebugVal: ", "" + climbsVal);
-            Log.d("DebugVal: ", "" + matchVal);
         }
     }
 
@@ -201,16 +176,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return (!cursor.moveToFirst() || cursor.getCount() == 0);
     }
 
-    public Team getTeam(String teamNumber) {
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_TEAMS + " WHERE " + KEY_TEAMNUMBER + " = " + teamNumber, null);
-        if (cursor != null)
-            cursor.moveToFirst();
-
-        Team team = new Team(cursor.getInt(0), cursor.getInt(1), cursor.getInt(2), cursor.getInt(3), cursor.getInt(4));
-
-        return team;
-    }
-
     public boolean deleteTeam(int teamNumber) {
         return db.delete(TABLE_TEAMS, KEY_TEAMNUMBER + "=" + teamNumber, null) > 0 && db.delete(TABLE_MATCH, KEY_TEAMNUMBER_MATCH + "=" + teamNumber, null) > 0;
     }
@@ -230,78 +195,185 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         setTeamsTable(teamNumber);
     }
 
-    public Cursor fetchAllTeams() {
-        Cursor mCursor = db.rawQuery("SELECT * FROM " + TABLE_TEAMS, null);
-
-        if (mCursor != null) {
-            mCursor.moveToFirst();
-        }
-        return mCursor;
-    }
-
-    public Cursor sortData(String type) {
+    public Cursor sortData(String type, String average_total) {
         Cursor cursor = db.rawQuery("", null);
-        if (type == "Switches") {
+        if (type.equals("Switches") && average_total.equals("Averages")) {
             cursor = db.query(TABLE_TEAMS, new String[]{
                     KEY_TEAMNUMBER,
                     KEY_SWITCHES_TOTAL,
                     KEY_SCALES_TOTAL,
                     KEY_VAULTS_TOTAL,
                     KEY_CLIMBS_TOTAL,
+                    KEY_CUBES_TOTAL,
                     KEY_MATCH_TOTAL,
                     KEY_SWITCHES_AVERAGE,
                     KEY_SCALES_AVERAGE,
                     KEY_VAULTS_AVERAGE,
                     KEY_CLIMBS_AVERAGE,
+                    KEY_CUBES_AVERAGE
             }, null, null, null, null, KEY_SWITCHES_AVERAGE + " DESC");
             if (cursor != null) {
                 cursor.moveToFirst();
             }
-        } else if (type == "Scales") {
+        } else if (type.equals("Scales") && average_total.equals("Averages")) {
             cursor = db.query(TABLE_TEAMS, new String[]{
                     KEY_TEAMNUMBER,
                     KEY_SWITCHES_TOTAL,
                     KEY_SCALES_TOTAL,
                     KEY_VAULTS_TOTAL,
                     KEY_CLIMBS_TOTAL,
+                    KEY_CUBES_TOTAL,
                     KEY_MATCH_TOTAL,
                     KEY_SWITCHES_AVERAGE,
                     KEY_SCALES_AVERAGE,
                     KEY_VAULTS_AVERAGE,
                     KEY_CLIMBS_AVERAGE,
+                    KEY_CUBES_AVERAGE
             }, null, null, null, null, KEY_SCALES_AVERAGE + " DESC");
             if (cursor != null) {
                 cursor.moveToFirst();
             }
-        } else if (type == "Vaults") {
+        } else if (type.equals("Vaults") && average_total.equals("Averages")) {
             cursor = db.query(TABLE_TEAMS, new String[]{
                     KEY_TEAMNUMBER,
                     KEY_SWITCHES_TOTAL,
                     KEY_SCALES_TOTAL,
                     KEY_VAULTS_TOTAL,
                     KEY_CLIMBS_TOTAL,
+                    KEY_CUBES_TOTAL,
                     KEY_MATCH_TOTAL,
                     KEY_SWITCHES_AVERAGE,
                     KEY_SCALES_AVERAGE,
                     KEY_VAULTS_AVERAGE,
                     KEY_CLIMBS_AVERAGE,
+                    KEY_CUBES_AVERAGE
             }, null, null, null, null, KEY_VAULTS_AVERAGE + " DESC");
             if (cursor != null) {
                 cursor.moveToFirst();
             }
-        } else if (type == "Climbs") {
+        } else if (type.equals("Climbs") && average_total.equals("Averages")) {
             cursor = db.query(TABLE_TEAMS, new String[]{
                     KEY_TEAMNUMBER,
                     KEY_SWITCHES_TOTAL,
                     KEY_SCALES_TOTAL,
                     KEY_VAULTS_TOTAL,
                     KEY_CLIMBS_TOTAL,
+                    KEY_CUBES_TOTAL,
                     KEY_MATCH_TOTAL,
                     KEY_SWITCHES_AVERAGE,
                     KEY_SCALES_AVERAGE,
                     KEY_VAULTS_AVERAGE,
                     KEY_CLIMBS_AVERAGE,
+                    KEY_CUBES_AVERAGE
             }, null, null, null, null, KEY_CLIMBS_AVERAGE + " DESC");
+            if (cursor != null) {
+                cursor.moveToFirst();
+            }
+        } else if (type.equals("Cubes") && average_total.equals("Averages")) {
+            cursor = db.query(TABLE_TEAMS, new String[]{
+                    KEY_TEAMNUMBER,
+                    KEY_SWITCHES_TOTAL,
+                    KEY_SCALES_TOTAL,
+                    KEY_VAULTS_TOTAL,
+                    KEY_CLIMBS_TOTAL,
+                    KEY_CUBES_TOTAL,
+                    KEY_MATCH_TOTAL,
+                    KEY_SWITCHES_AVERAGE,
+                    KEY_SCALES_AVERAGE,
+                    KEY_VAULTS_AVERAGE,
+                    KEY_CLIMBS_AVERAGE,
+                    KEY_CUBES_AVERAGE
+            }, null, null, null, null, KEY_CUBES_AVERAGE + " DESC");
+            if (cursor != null) {
+                cursor.moveToFirst();
+            }
+        } else if (type.equals("Switches") && average_total.equals("Totals")) {
+            cursor = db.query(TABLE_TEAMS, new String[]{
+                    KEY_TEAMNUMBER,
+                    KEY_SWITCHES_TOTAL,
+                    KEY_SCALES_TOTAL,
+                    KEY_VAULTS_TOTAL,
+                    KEY_CLIMBS_TOTAL,
+                    KEY_CUBES_TOTAL,
+                    KEY_MATCH_TOTAL,
+                    KEY_SWITCHES_AVERAGE,
+                    KEY_SCALES_AVERAGE,
+                    KEY_VAULTS_AVERAGE,
+                    KEY_CLIMBS_AVERAGE,
+                    KEY_CUBES_AVERAGE
+            }, null, null, null, null, KEY_SWITCHES_TOTAL + " DESC");
+            if (cursor != null) {
+                cursor.moveToFirst();
+            }
+        } else if (type.equals("Scales") && average_total.equals("Totals")) {
+            cursor = db.query(TABLE_TEAMS, new String[]{
+                    KEY_TEAMNUMBER,
+                    KEY_SWITCHES_TOTAL,
+                    KEY_SCALES_TOTAL,
+                    KEY_VAULTS_TOTAL,
+                    KEY_CLIMBS_TOTAL,
+                    KEY_CUBES_TOTAL,
+                    KEY_MATCH_TOTAL,
+                    KEY_SWITCHES_AVERAGE,
+                    KEY_SCALES_AVERAGE,
+                    KEY_VAULTS_AVERAGE,
+                    KEY_CLIMBS_AVERAGE,
+                    KEY_CUBES_AVERAGE
+            }, null, null, null, null, KEY_SCALES_TOTAL + " DESC");
+            if (cursor != null) {
+                cursor.moveToFirst();
+            }
+        } else if (type.equals("Vaults") && average_total.equals("Totals")) {
+            cursor = db.query(TABLE_TEAMS, new String[]{
+                    KEY_TEAMNUMBER,
+                    KEY_SWITCHES_TOTAL,
+                    KEY_SCALES_TOTAL,
+                    KEY_VAULTS_TOTAL,
+                    KEY_CLIMBS_TOTAL,
+                    KEY_CUBES_TOTAL,
+                    KEY_MATCH_TOTAL,
+                    KEY_SWITCHES_AVERAGE,
+                    KEY_SCALES_AVERAGE,
+                    KEY_VAULTS_AVERAGE,
+                    KEY_CLIMBS_AVERAGE,
+                    KEY_CUBES_AVERAGE
+            }, null, null, null, null, KEY_VAULTS_TOTAL + " DESC");
+            if (cursor != null) {
+                cursor.moveToFirst();
+            }
+        } else if (type.equals("Climbs") && average_total.equals("Totals")) {
+            cursor = db.query(TABLE_TEAMS, new String[]{
+                    KEY_TEAMNUMBER,
+                    KEY_SWITCHES_TOTAL,
+                    KEY_SCALES_TOTAL,
+                    KEY_VAULTS_TOTAL,
+                    KEY_CLIMBS_TOTAL,
+                    KEY_CUBES_TOTAL,
+                    KEY_MATCH_TOTAL,
+                    KEY_SWITCHES_AVERAGE,
+                    KEY_SCALES_AVERAGE,
+                    KEY_VAULTS_AVERAGE,
+                    KEY_CLIMBS_AVERAGE,
+                    KEY_CUBES_AVERAGE
+            }, null, null, null, null, KEY_CLIMBS_TOTAL + " DESC");
+            if (cursor != null) {
+                cursor.moveToFirst();
+            }
+        } else if (type.equals("Cubes") && average_total.equals("Totals")) {
+            cursor = db.query(TABLE_TEAMS, new String[]{
+                    KEY_TEAMNUMBER,
+                    KEY_SWITCHES_TOTAL,
+                    KEY_SCALES_TOTAL,
+                    KEY_VAULTS_TOTAL,
+                    KEY_CLIMBS_TOTAL,
+                    KEY_CUBES_TOTAL,
+                    KEY_MATCH_TOTAL,
+                    KEY_SWITCHES_AVERAGE,
+                    KEY_SCALES_AVERAGE,
+                    KEY_VAULTS_AVERAGE,
+                    KEY_CLIMBS_AVERAGE,
+                    KEY_CUBES_AVERAGE
+            }, null, null, null, null, KEY_CUBES_TOTAL + " DESC");
             if (cursor != null) {
                 cursor.moveToFirst();
             }

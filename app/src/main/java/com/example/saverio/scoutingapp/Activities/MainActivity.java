@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private DatabaseHandler db;
     private SimpleCursorAdapter dataAdapter;
-    private static final String[] paths = {"Switches", "Scales", "Vaults", "Climbs"};
+    private static final String[] types = {"Cubes", "Switches", "Scales", "Vaults", "Climbs"};
+    private static final String[] averages_totals = {"Averages", "Totals"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,32 +31,33 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
 
         db = new DatabaseHandler(this);
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        spinner.bringToFront();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_item, paths);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
 
-        displayListViewSorted(paths[0]);
+        Spinner type_spinner = (Spinner) findViewById(R.id.type_spinner);
+        Spinner average_total_spinner = (Spinner) findViewById(R.id.average_total_spinner);
+
+        type_spinner.bringToFront();
+        average_total_spinner.bringToFront();
+
+        ArrayAdapter<String> type_adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_item, types);
+        ArrayAdapter<String> average_total_adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_item, averages_totals);
+
+        type_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        average_total_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        type_spinner.setAdapter(type_adapter);
+        average_total_spinner.setAdapter(average_total_adapter);
+
+        type_spinner.setOnItemSelectedListener(this);
+        average_total_spinner.setOnItemSelectedListener(this);
+
+        displayListViewSorted(types[0], averages_totals[0]);
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        switch (i) {
-            case 0:
-                displayListViewSorted("Switches");
-                break;
-            case 1:
-                displayListViewSorted("Scales");
-                break;
-            case 2:
-                displayListViewSorted("Vaults");
-                break;
-            case 3:
-                displayListViewSorted("Climbs");
-                break;
-        }
+        Spinner type_spinner = (Spinner) findViewById(R.id.type_spinner);
+        Spinner average_total_spinner = (Spinner) findViewById(R.id.average_total_spinner);
+        displayListViewSorted(types[type_spinner.getSelectedItemPosition()], averages_totals[average_total_spinner.getSelectedItemPosition()]);
     }
 
     @Override
@@ -63,45 +65,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
-
-    private void displayListView() {
-        Cursor cursor = db.fetchAllTeams();
-
-        String[] columns = new String[]{
-                DatabaseHandler.KEY_TEAMNUMBER,
-                DatabaseHandler.KEY_SWITCHES_TOTAL,
-                DatabaseHandler.KEY_SCALES_TOTAL,
-                DatabaseHandler.KEY_VAULTS_TOTAL,
-                DatabaseHandler.KEY_CLIMBS_TOTAL,
-        };
-
-        int[] to = new int[]{
-                R.id.teamNumberTextView,
-                R.id.switchTotalTextView,
-                R.id.scaleTotalTextView,
-                R.id.vaultTotalTextView,
-                R.id.climbTotalTextView,
-        };
-
-        dataAdapter = new SimpleCursorAdapter(
-                this, R.layout.team_list_layout,
-                cursor,
-                columns,
-                to,
-                0);
-
-        ListView listView = (ListView) findViewById(R.id.teamList);
-        listView.setAdapter(dataAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-
-            }
-        });
-    }
-
-    private void displayListViewSorted(String type) {
-        Cursor cursor = db.sortData(type);
+    private void displayListViewSorted(String type, String average_total) {
+        Cursor cursor = db.sortData(type, average_total);
 
         String[] columns = new String[]{
                 DatabaseHandler.KEY_TEAMNUMBER,
@@ -109,10 +74,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 DatabaseHandler.KEY_SCALES_TOTAL,
                 DatabaseHandler.KEY_VAULTS_TOTAL,
                 DatabaseHandler.KEY_CLIMBS_TOTAL,
+                DatabaseHandler.KEY_CUBES_TOTAL,
                 DatabaseHandler.KEY_SWITCHES_AVERAGE,
                 DatabaseHandler.KEY_SCALES_AVERAGE,
                 DatabaseHandler.KEY_VAULTS_AVERAGE,
-                DatabaseHandler.KEY_CLIMBS_AVERAGE
+                DatabaseHandler.KEY_CLIMBS_AVERAGE,
+                DatabaseHandler.KEY_CUBES_AVERAGE
         };
 
         int[] to = new int[]{
@@ -121,10 +88,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 R.id.scaleTotalTextView,
                 R.id.vaultTotalTextView,
                 R.id.climbTotalTextView,
+                R.id.cubesTotalTextView,
                 R.id.switchAverageTextView,
                 R.id.scaleAverageTextView,
                 R.id.vaultAverageTextView,
-                R.id.climbAverageTextView
+                R.id.climbAverageTextView,
+                R.id.cubesAverageTextView
         };
 
         dataAdapter = new SimpleCursorAdapter(
