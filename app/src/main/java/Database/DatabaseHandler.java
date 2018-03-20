@@ -118,7 +118,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         double climbs_average_result = (double) Math.round(climbs_average * 100d) / 100d;
 
         int cubes_total = switches + scales + vaults;
-        double cubes_average = cubes_total / matches;
+        double cubes_average = (double) cubes_total / (double) matches;
 
         ContentValues values = new ContentValues();
         values.put(KEY_TEAMNUMBER, teamNumber);
