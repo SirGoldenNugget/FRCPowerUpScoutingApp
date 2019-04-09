@@ -14,20 +14,10 @@
         <com.jjoe64.graphview.GraphView
             android:id="@+id/cubes_graph"
             android:layout_width="match_parent"
-            android:layout_height="400dip" />
+            android:layout_height="300dip" />
 
         <com.jjoe64.graphview.GraphView
             android:id="@+id/switch_graph"
-            android:layout_width="match_parent"
-            android:layout_height="300dip" />
-
-        <com.jjoe64.graphview.GraphView
-            android:id="@+id/scale_graph"
-            android:layout_width="match_parent"
-            android:layout_height="300dip" />
-
-        <com.jjoe64.graphview.GraphView
-            android:id="@+id/vault_graph"
             android:layout_width="match_parent"
             android:layout_height="300dip" />
 

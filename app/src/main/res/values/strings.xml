@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">FRC Power Up Scouting App</string>
+    <string name="app_name">FRC Deep Space Scouting App</string>
     <string name="btn">Save</string>
     <string name="btn_update">Edit</string>
     <string name="hint1">Team Number</string>
-    <string name="hint2">Switches</string>
-    <string name="hint3">Scales</string>
-    <string name="hint4">Vaults</string>
-    <string name="hint5">Climbs</string>
+    <string name="hint2">Hatches</string>
+    <string name="hint3">Cargo</string>
+    <string name="hint4">Sandstorm</string>
+    <string name="hint5">Endgame</string>
     <string name="hint6">Match Number</string>
 </resources>

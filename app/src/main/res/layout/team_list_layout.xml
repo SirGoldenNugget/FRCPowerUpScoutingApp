@@ -15,98 +15,213 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/cubesTitleTotalTextView"
+        android:id="@+id/pointsTitleTotalTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/teamTextView"
         android:layout_below="@+id/teamTextView"
-        android:text="Cubes Total: "
+        android:text="Points Total: "
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/cubesTotalTextView"
+        android:id="@+id/pointsTotalTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/cubesTitleTotalTextView"
-        android:layout_alignBottom="@+id/cubesTitleTotalTextView"
-        android:layout_toEndOf="@+id/cubesTitleTotalTextView"
-        android:layout_toRightOf="@+id/cubesTitleTotalTextView"
+        android:layout_alignBaseline="@+id/pointsTitleTotalTextView"
+        android:layout_alignBottom="@+id/pointsTitleTotalTextView"
+        android:layout_toEndOf="@+id/pointsTitleTotalTextView"
+        android:layout_toRightOf="@+id/pointsTitleTotalTextView"
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/switchTotalTitleTextView"
+        android:id="@+id/hatchesTotalTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/cubesTitleTotalTextView"
-        android:layout_below="@+id/cubesTitleTotalTextView"
-        android:text="Switch Total: "
+        android:layout_alignLeft="@+id/pointsTitleTotalTextView"
+        android:layout_below="@+id/pointsTitleTotalTextView"
+        android:text="Hatches - Total: "
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/switchTotalTextView"
+        android:id="@+id/hatchesTotalTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/switchTotalTitleTextView"
-        android:layout_alignBottom="@+id/switchTotalTitleTextView"
-        android:layout_toEndOf="@+id/switchTotalTitleTextView"
-        android:layout_toRightOf="@+id/switchTotalTitleTextView"
+        android:layout_alignBaseline="@+id/hatchesTotalTitleTextView"
+        android:layout_alignBottom="@+id/hatchesTotalTitleTextView"
+        android:layout_toEndOf="@+id/hatchesTotalTitleTextView"
+        android:layout_toRightOf="@+id/hatchesTotalTitleTextView"
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/scaleTotalTitleTextView"
+        android:id="@+id/hatchesLowerTotalTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/switchTotalTitleTextView"
-        android:layout_below="@+id/switchTotalTitleTextView"
-        android:text="Scale Total: "
+        android:layout_alignBaseline="@+id/hatchesTotalTextView"
+        android:layout_alignBottom="@+id/hatchesTotalTextView"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/hatchesTotalTextView"
+        android:layout_toRightOf="@+id/hatchesTotalTextView"
+        android:text="Low: "
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/scaleTotalTextView"
+        android:id="@+id/hatchesLowerTotalTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/scaleTotalTitleTextView"
-        android:layout_alignBottom="@+id/scaleTotalTitleTextView"
-        android:layout_toEndOf="@+id/scaleTotalTitleTextView"
-        android:layout_toRightOf="@+id/scaleTotalTitleTextView"
+        android:layout_alignBaseline="@+id/hatchesLowerTotalTitleTextView"
+        android:layout_alignBottom="@+id/hatchesLowerTotalTitleTextView"
+        android:layout_toEndOf="@+id/hatchesLowerTotalTitleTextView"
+        android:layout_toRightOf="@+id/hatchesLowerTotalTitleTextView"
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/vaultTitleTotalTextView"
+        android:id="@+id/hatchesUpperTotalTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/scaleTotalTitleTextView"
-        android:layout_below="@+id/scaleTotalTitleTextView"
-        android:text="Vault Total: "
+        android:layout_alignBaseline="@+id/hatchesLowerTotalTextView"
+        android:layout_alignBottom="@+id/hatchesLowerTotalTextView"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/hatchesLowerTotalTextView"
+        android:layout_toRightOf="@+id/hatchesLowerTotalTextView"
+        android:text="High: "
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/vaultTotalTextView"
+        android:id="@+id/hatchesUpperTotalTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/vaultTitleTotalTextView"
-        android:layout_alignBottom="@+id/vaultTitleTotalTextView"
-        android:layout_toEndOf="@+id/vaultTitleTotalTextView"
-        android:layout_toRightOf="@+id/vaultTitleTotalTextView"
+        android:layout_alignBaseline="@+id/hatchesUpperTotalTitleTextView"
+        android:layout_alignBottom="@+id/hatchesUpperTotalTitleTextView"
+        android:layout_toEndOf="@+id/hatchesUpperTotalTitleTextView"
+        android:layout_toRightOf="@+id/hatchesUpperTotalTitleTextView"
+        android:text="TextView" />
+
+    <!--<TextView-->
+        <!--android:id="@+id/hatchesDroppedTotalTitleTextView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignBaseline="@+id/hatchesUpperTotalTextView"-->
+        <!--android:layout_alignBottom="@+id/hatchesUpperTotalTextView"-->
+        <!--android:layout_marginLeft="14dp"-->
+        <!--android:layout_marginStart="14dp"-->
+        <!--android:layout_toEndOf="@+id/hatchesUpperTotalTextView"-->
+        <!--android:layout_toRightOf="@+id/hatchesUpperTotalTextView"-->
+        <!--android:text="Drop: "-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/hatchesDroppedTotalTextView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignBaseline="@+id/hatchesDroppedTotalTitleTextView"-->
+        <!--android:layout_alignBottom="@+id/hatchesDroppedTotalTitleTextView"-->
+        <!--android:layout_toEndOf="@+id/hatchesDroppedTotalTitleTextView"-->
+        <!--android:layout_toRightOf="@+id/hatchesDroppedTotalTitleTextView"-->
+        <!--android:text="TextView" />-->
+
+    <TextView
+        android:id="@+id/cargoTotalTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/hatchesAverageTitleTextView"
+        android:layout_below="@+id/hatchesAverageTitleTextView"
+        android:text="Cargo - Total: "
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/cargoTotalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cargoTotalTitleTextView"
+        android:layout_alignBottom="@+id/cargoTotalTitleTextView"
+        android:layout_toEndOf="@+id/cargoTotalTitleTextView"
+        android:layout_toRightOf="@+id/cargoTotalTitleTextView"
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/climbTitleTotalTextView"
+        android:id="@+id/cargoLowerTotalTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/vaultTitleTotalTextView"
-        android:layout_below="@+id/vaultTitleTotalTextView"
-        android:text="Climb Total: "
+        android:layout_alignBaseline="@+id/cargoTotalTextView"
+        android:layout_alignBottom="@+id/cargoTotalTextView"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/cargoTotalTextView"
+        android:layout_toRightOf="@+id/cargoTotalTextView"
+        android:text="Low: "
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/climbTotalTextView"
+        android:id="@+id/cargoLowerTotalTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/climbTitleTotalTextView"
-        android:layout_alignBottom="@+id/climbTitleTotalTextView"
-        android:layout_toEndOf="@+id/climbTitleTotalTextView"
-        android:layout_toRightOf="@+id/climbTitleTotalTextView"
+        android:layout_alignBaseline="@+id/cargoLowerTotalTitleTextView"
+        android:layout_alignBottom="@+id/cargoLowerTotalTitleTextView"
+        android:layout_toEndOf="@+id/cargoLowerTotalTitleTextView"
+        android:layout_toRightOf="@+id/cargoLowerTotalTitleTextView"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/cargoUpperTotalTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cargoLowerTotalTextView"
+        android:layout_alignBottom="@+id/cargoLowerTotalTextView"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/cargoLowerTotalTextView"
+        android:layout_toRightOf="@+id/cargoLowerTotalTextView"
+        android:text="High: "
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/cargoUpperTotalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cargoUpperTotalTitleTextView"
+        android:layout_alignBottom="@+id/cargoUpperTotalTitleTextView"
+        android:layout_toEndOf="@+id/cargoUpperTotalTitleTextView"
+        android:layout_toRightOf="@+id/cargoUpperTotalTitleTextView"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/sandstormTitleTotalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cargoAverageTitleTextView"
+        android:layout_below="@+id/cargoAverageTitleTextView"
+        android:text="Sandstorm Total: "
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/sandstormTotalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/sandstormTitleTotalTextView"
+        android:layout_alignBottom="@+id/sandstormTitleTotalTextView"
+        android:layout_toEndOf="@+id/sandstormTitleTotalTextView"
+        android:layout_toRightOf="@+id/sandstormTitleTotalTextView"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/endgameTitleTotalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/sandstormTitleTotalTextView"
+        android:layout_below="@+id/sandstormTitleTotalTextView"
+        android:text="Endgame Total: "
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/endgameTotalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/endgameTitleTotalTextView"
+        android:layout_alignBottom="@+id/endgameTitleTotalTextView"
+        android:layout_toEndOf="@+id/endgameTitleTotalTextView"
+        android:layout_toRightOf="@+id/endgameTitleTotalTextView"
         android:text="TextView" />
 
     <TextView
@@ -122,117 +237,224 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/scaleAverageTitleTextView"
+        android:id="@+id/hatchesAverageTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/scaleTotalTextView"
-        android:layout_alignBottom="@+id/scaleTotalTextView"
-        android:layout_marginLeft="14dp"
-        android:layout_marginStart="14dp"
-        android:layout_toEndOf="@+id/scaleTotalTextView"
-        android:layout_toRightOf="@+id/scaleTotalTextView"
-        android:text="Scale Average:" />
+        android:layout_alignLeft="@+id/hatchesTotalTitleTextView"
+        android:layout_below="@+id/hatchesTotalTitleTextView"
+        android:text="Hatches - Avg:" />
 
     <TextView
-        android:id="@+id/scaleAverageTextView"
+        android:id="@+id/hatchesAverageTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/scaleAverageTitleTextView"
-        android:layout_alignBottom="@+id/scaleAverageTitleTextView"
-        android:layout_toEndOf="@+id/scaleAverageTitleTextView"
-        android:layout_toRightOf="@+id/scaleAverageTitleTextView"
+        android:layout_alignBaseline="@+id/hatchesAverageTitleTextView"
+        android:layout_alignBottom="@+id/hatchesAverageTitleTextView"
+        android:layout_toEndOf="@+id/hatchesAverageTitleTextView"
+        android:layout_toRightOf="@+id/hatchesAverageTitleTextView"
         android:paddingLeft="5dp"
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/switchAverageTitleTextView"
+        android:id="@+id/hatchesLowerAverageTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/switchTotalTextView"
-        android:layout_alignBottom="@+id/switchTotalTextView"
+        android:layout_alignBaseline="@+id/hatchesAverageTextView"
+        android:layout_alignBottom="@+id/hatchesAverageTextView"
         android:layout_marginLeft="14dp"
         android:layout_marginStart="14dp"
-        android:layout_toEndOf="@+id/switchTotalTextView"
-        android:layout_toRightOf="@+id/switchTotalTextView"
-        android:text="Switch Average:" />
+        android:layout_toEndOf="@+id/hatchesAverageTextView"
+        android:layout_toRightOf="@+id/hatchesAverageTextView"
+        android:text="Low:" />
 
     <TextView
-        android:id="@+id/switchAverageTextView"
+        android:id="@+id/hatchesLowerAverageTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/switchAverageTitleTextView"
-        android:layout_alignBottom="@+id/switchAverageTitleTextView"
-        android:layout_toEndOf="@+id/switchAverageTitleTextView"
-        android:layout_toRightOf="@+id/switchAverageTitleTextView"
+        android:layout_alignBaseline="@+id/hatchesLowerAverageTitleTextView"
+        android:layout_alignBottom="@+id/hatchesLowerAverageTitleTextView"
+        android:layout_toEndOf="@+id/hatchesLowerAverageTitleTextView"
+        android:layout_toRightOf="@+id/hatchesLowerAverageTitleTextView"
         android:paddingLeft="5dp"
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/vaultAverageTitleTextView"
+        android:id="@+id/hatchesUpperAverageTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/vaultTotalTextView"
-        android:layout_alignBottom="@+id/vaultTotalTextView"
+        android:layout_alignBaseline="@+id/hatchesLowerAverageTextView"
+        android:layout_alignBottom="@+id/hatchesLowerAverageTextView"
         android:layout_marginLeft="14dp"
         android:layout_marginStart="14dp"
-        android:layout_toEndOf="@+id/vaultTotalTextView"
-        android:layout_toRightOf="@+id/vaultTotalTextView"
-        android:text="Vault Average:" />
+        android:layout_toEndOf="@+id/hatchesLowerAverageTextView"
+        android:layout_toRightOf="@+id/hatchesLowerAverageTextView"
+        android:text="High:" />
 
     <TextView
-        android:id="@+id/vaultAverageTextView"
+        android:id="@+id/hatchesUpperAverageTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/vaultAverageTitleTextView"
-        android:layout_alignBottom="@+id/vaultAverageTitleTextView"
-        android:layout_toEndOf="@+id/vaultAverageTitleTextView"
-        android:layout_toRightOf="@+id/vaultAverageTitleTextView"
+        android:layout_alignBaseline="@+id/hatchesUpperAverageTitleTextView"
+        android:layout_alignBottom="@+id/hatchesUpperAverageTitleTextView"
+        android:layout_toEndOf="@+id/hatchesUpperAverageTitleTextView"
+        android:layout_toRightOf="@+id/hatchesUpperAverageTitleTextView"
+        android:paddingLeft="5dp"
+        android:text="TextView" />
+
+    <!--<TextView-->
+        <!--android:id="@+id/hatchesDroppedAverageTitleTextView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignBaseline="@+id/hatchesUpperAverageTextView"-->
+        <!--android:layout_alignBottom="@+id/hatchesUpperAverageTextView"-->
+        <!--android:layout_marginLeft="14dp"-->
+        <!--android:layout_marginStart="14dp"-->
+        <!--android:layout_toEndOf="@+id/hatchesUpperAverageTextView"-->
+        <!--android:layout_toRightOf="@+id/hatchesUpperAverageTextView"-->
+        <!--android:text="Drop:" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/hatchesDroppedAverageTextView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignBaseline="@+id/hatchesDroppedAverageTitleTextView"-->
+        <!--android:layout_alignBottom="@+id/hatchesDroppedAverageTitleTextView"-->
+        <!--android:layout_toEndOf="@+id/hatchesDroppedAverageTitleTextView"-->
+        <!--android:layout_toRightOf="@+id/hatchesDroppedAverageTitleTextView"-->
+        <!--android:paddingLeft="5dp"-->
+        <!--android:text="TextView" />-->
+
+    <TextView
+        android:id="@+id/cargoAverageTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cargoTotalTitleTextView"
+        android:layout_below="@+id/cargoTotalTitleTextView"
+        android:text="Cargo - Avg:" />
+
+    <TextView
+        android:id="@+id/cargoAverageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cargoAverageTitleTextView"
+        android:layout_alignBottom="@+id/cargoAverageTitleTextView"
+        android:layout_toEndOf="@+id/cargoAverageTitleTextView"
+        android:layout_toRightOf="@+id/cargoAverageTitleTextView"
         android:paddingLeft="5dp"
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/climbAverageTitleTextView"
+        android:id="@+id/cargoLowerAverageTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/climbTotalTextView"
-        android:layout_alignBottom="@+id/climbTotalTextView"
+        android:layout_alignBaseline="@+id/cargoAverageTextView"
+        android:layout_alignBottom="@+id/cargoAverageTextView"
         android:layout_marginLeft="14dp"
         android:layout_marginStart="14dp"
-        android:layout_toEndOf="@+id/climbTotalTextView"
-        android:layout_toRightOf="@+id/climbTotalTextView"
-        android:text="Climb Average:" />
+        android:layout_toEndOf="@+id/cargoAverageTextView"
+        android:layout_toRightOf="@+id/cargoAverageTextView"
+        android:text="Low:" />
 
     <TextView
-        android:id="@+id/climbAverageTextView"
+        android:id="@+id/cargoLowerAverageTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/climbAverageTitleTextView"
-        android:layout_alignBottom="@+id/climbAverageTitleTextView"
-        android:layout_toEndOf="@+id/climbAverageTitleTextView"
-        android:layout_toRightOf="@+id/climbAverageTitleTextView"
+        android:layout_alignBaseline="@+id/cargoLowerAverageTitleTextView"
+        android:layout_alignBottom="@+id/cargoLowerAverageTitleTextView"
+        android:layout_toEndOf="@+id/cargoLowerAverageTitleTextView"
+        android:layout_toRightOf="@+id/cargoLowerAverageTitleTextView"
         android:paddingLeft="5dp"
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/cubesAverageTitleTextView"
+        android:id="@+id/cargoUpperAverageTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/cubesTotalTextView"
-        android:layout_alignBottom="@+id/cubesTotalTextView"
+        android:layout_alignBaseline="@+id/cargoLowerAverageTextView"
+        android:layout_alignBottom="@+id/cargoLowerAverageTextView"
         android:layout_marginLeft="14dp"
         android:layout_marginStart="14dp"
-        android:layout_toEndOf="@+id/cubesTotalTextView"
-        android:layout_toRightOf="@+id/cubesTotalTextView"
-        android:text="Cubes Average:" />
+        android:layout_toEndOf="@+id/cargoLowerAverageTextView"
+        android:layout_toRightOf="@+id/cargoLowerAverageTextView"
+        android:text="High:" />
 
     <TextView
-        android:id="@+id/cubesAverageTextView"
+        android:id="@+id/cargoUpperAverageTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/cubesAverageTitleTextView"
-        android:layout_alignBottom="@+id/cubesAverageTitleTextView"
-        android:layout_toEndOf="@+id/cubesAverageTitleTextView"
-        android:layout_toRightOf="@+id/cubesAverageTitleTextView"
+        android:layout_alignBaseline="@+id/cargoUpperAverageTitleTextView"
+        android:layout_alignBottom="@+id/cargoUpperAverageTitleTextView"
+        android:layout_toEndOf="@+id/cargoUpperAverageTitleTextView"
+        android:layout_toRightOf="@+id/cargoUpperAverageTitleTextView"
+        android:paddingLeft="5dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/sandstormAverageTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/sandstormTotalTextView"
+        android:layout_alignBottom="@+id/sandstormTotalTextView"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/sandstormTotalTextView"
+        android:layout_toRightOf="@+id/sandstormTotalTextView"
+        android:text="Sandstorm Avg:" />
+
+    <TextView
+        android:id="@+id/sandstormAverageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/sandstormAverageTitleTextView"
+        android:layout_alignBottom="@+id/sandstormAverageTitleTextView"
+        android:layout_toEndOf="@+id/sandstormAverageTitleTextView"
+        android:layout_toRightOf="@+id/sandstormAverageTitleTextView"
+        android:paddingLeft="5dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/endgameAverageTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/endgameTotalTextView"
+        android:layout_alignBottom="@+id/endgameTotalTextView"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/endgameTotalTextView"
+        android:layout_toRightOf="@+id/endgameTotalTextView"
+        android:text="Endgame Avg:" />
+
+    <TextView
+        android:id="@+id/endgameAverageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/endgameAverageTitleTextView"
+        android:layout_alignBottom="@+id/endgameAverageTitleTextView"
+        android:layout_toEndOf="@+id/endgameAverageTitleTextView"
+        android:layout_toRightOf="@+id/endgameAverageTitleTextView"
+        android:paddingLeft="5dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/pointsAverageTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/pointsTotalTextView"
+        android:layout_alignBottom="@+id/pointsTotalTextView"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/pointsTotalTextView"
+        android:layout_toRightOf="@+id/pointsTotalTextView"
+        android:text="Points Avg:" />
+
+    <TextView
+        android:id="@+id/pointsAverageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/pointsAverageTitleTextView"
+        android:layout_alignBottom="@+id/pointsAverageTitleTextView"
+        android:layout_toEndOf="@+id/pointsAverageTitleTextView"
+        android:layout_toRightOf="@+id/pointsAverageTitleTextView"
         android:paddingLeft="5dp"
         android:text="TextView" />
 </RelativeLayout>

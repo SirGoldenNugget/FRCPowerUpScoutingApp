@@ -26,10 +26,13 @@ public class EditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit);
 
         final EditText teamNumber = (EditText) findViewById(R.id.team_number_edit);
-        final EditText switches = (EditText) findViewById(R.id.switches_edit);
-        final EditText scales = (EditText) findViewById(R.id.scales_edit);
-        final EditText vaults = (EditText) findViewById(R.id.vaults_edit);
-        final EditText climbs = (EditText) findViewById(R.id.climbs_edit);
+        final EditText hatches_lower = (EditText) findViewById(R.id.hatches_lower_edit);
+        final EditText hatches_upper = (EditText) findViewById(R.id.hatches_upper_edit);
+//        final EditText hatches_dropped = (EditText) findViewById(R.id.hatches_dropped_edit);
+        final EditText cargo_lower = (EditText) findViewById(R.id.cargo_lower_edit);
+        final EditText cargo_upper = (EditText) findViewById(R.id.cargo_upper_edit);
+        final EditText sandstorm = (EditText) findViewById(R.id.sandstorm_edit);
+        final EditText endgame = (EditText) findViewById(R.id.endgame_edit);
         final EditText nmatch = (EditText) findViewById(R.id.match_edit);
 
         final Button edit = (Button) findViewById(R.id.confirmEdit);
@@ -39,23 +42,53 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String _teamnumber = teamNumber.getText().toString();
-                String _switches = switches.getText().toString();
-                String _scales = scales.getText().toString();
-                String _vaults = vaults.getText().toString();
-                String _climbs = climbs.getText().toString();
+                String _hatches_lower = hatches_lower.getText().toString();
+                String _hatches_upper = hatches_upper.getText().toString();
+//                String _hatches_dropped = hatches_dropped.getText().toString();
+                String _cargo_lower = cargo_lower.getText().toString();
+                String _cargo_upper = cargo_upper.getText().toString();
+                String _sandstorm = sandstorm.getText().toString();
+                String _endgame = endgame.getText().toString();
                 String _nmatch = nmatch.getText().toString();
 
-                if (_teamnumber.matches("") || _switches.matches("") || _scales.matches("") || _vaults.matches("") || _climbs.matches("") || _nmatch.matches("")) {
+                if (_teamnumber.matches("") ||
+                        _hatches_lower.matches("") ||
+                        _hatches_upper.matches("") ||
+//                        _hatches_dropped.matches("") ||
+                        _cargo_lower.matches("") ||
+                        _cargo_upper.matches("") ||
+                        _sandstorm.matches("") ||
+                        _endgame.matches("") ||
+                        _nmatch.matches("")) {
                     Toast.makeText(EditActivity.this, "Complete All The Fields", Toast.LENGTH_SHORT).show();
                 } else {
-                    if (isInteger(_teamnumber) && isInteger(_switches) && isInteger(_scales) && isInteger(_vaults) && isInteger(_climbs) && isInteger(_nmatch)) {
-                        db.editTeam(Integer.parseInt(_teamnumber), Integer.parseInt(_switches), Integer.parseInt(_scales), Integer.parseInt(_vaults), Integer.parseInt(_climbs), Integer.parseInt(_nmatch));
+                    if (isInteger(_teamnumber) && isInteger(_hatches_lower) &&
+                            isInteger(_hatches_upper) &&
+//                            isInteger(_hatches_dropped) &&
+                            isInteger(_cargo_lower) &&
+                            isInteger(_cargo_upper) &&
+                            isInteger(_sandstorm) &&
+                            isInteger(_endgame) &&
+                            isInteger(_nmatch)) {
+                        db.editTeam(Integer.parseInt(_teamnumber),
+                                Integer.parseInt(_hatches_lower),
+                                Integer.parseInt(_hatches_upper),
+//                                Integer.parseInt(_hatches_dropped),
+                                0,
+                                Integer.parseInt(_cargo_lower),
+                                Integer.parseInt(_cargo_upper),
+                                Integer.parseInt(_sandstorm),
+                                Integer.parseInt(_endgame),
+                                Integer.parseInt(_nmatch));
                         Toast.makeText(EditActivity.this, "Team Edited", Toast.LENGTH_SHORT).show();
                         teamNumber.setText("");
-                        switches.setText("");
-                        scales.setText("");
-                        vaults.setText("");
-                        climbs.setText("");
+                        hatches_lower.setText("");
+                        hatches_upper.setText("");
+//                        hatches_dropped.setText("");
+                        cargo_lower.setText("");
+                        cargo_upper.setText("");
+                        sandstorm.setText("");
+                        endgame.setText("");
                         nmatch.setText("");
                     } else {
                         Toast.makeText(EditActivity.this, "Only Numbers Accepted", Toast.LENGTH_SHORT).show();

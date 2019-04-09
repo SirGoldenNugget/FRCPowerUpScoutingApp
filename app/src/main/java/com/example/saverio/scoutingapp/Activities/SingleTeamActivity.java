@@ -41,14 +41,12 @@ public class SingleTeamActivity extends AppCompatActivity {
 
         db = database.getReadableDatabase();
 
-        graphCubes();
-        graphSwitches();
-        graphScales();
-        graphVaults();
+        graphHatches();
+        graphCargo();
         graphClimbs();
     }
 
-    public void graphCubes() {
+    public void graphHatches() {
         GraphView graph = (GraphView) findViewById(R.id.cubes_graph);
 
         Cursor cursor = db.rawQuery("SELECT * FROM " + DatabaseHandler.TABLE_MATCH + " WHERE " + DatabaseHandler.KEY_TEAMNUMBER_MATCH + " = " + teamNumber, null);
@@ -61,8 +59,8 @@ public class SingleTeamActivity extends AppCompatActivity {
         int counter = 0;
 
         while (cursor.moveToNext()) {
-            int cubes = cursor.getInt(1) + cursor.getInt(2) + cursor.getInt(3);
-            int match = cursor.getInt(5);
+            int cubes = cursor.getInt(1);
+            int match = cursor.getInt(9);
 
             dataset[counter] = new DataPoint(match, cubes);
             counter++;
@@ -81,12 +79,12 @@ public class SingleTeamActivity extends AppCompatActivity {
         graph.getGridLabelRenderer().setNumVerticalLabels(11);
         graph.getGridLabelRenderer().setNumHorizontalLabels(12);
         graph.getViewport().setScrollable(false);
-        graph.setTitle("Cubes");
+        graph.setTitle("Hatches");
         graph.setTitleTextSize(40f);
         graph.addSeries(series);
     }
 
-    public void graphSwitches() {
+    public void graphCargo() {
         GraphView graph = (GraphView) findViewById(R.id.switch_graph);
 
         Cursor cursor = db.rawQuery("SELECT * FROM " + DatabaseHandler.TABLE_MATCH + " WHERE " + DatabaseHandler.KEY_TEAMNUMBER_MATCH + " = " + teamNumber, null);
@@ -99,8 +97,8 @@ public class SingleTeamActivity extends AppCompatActivity {
         int counter = 0;
 
         while (cursor.moveToNext()) {
-            int switches = cursor.getInt(1);
-            int match = cursor.getInt(5);
+            int switches = cursor.getInt(4);
+            int match = cursor.getInt(9);
 
             dataset[counter] = new DataPoint(match, switches);
             counter++;
@@ -112,90 +110,14 @@ public class SingleTeamActivity extends AppCompatActivity {
 
         graph.getViewport().setYAxisBoundsManual(true);
         graph.getViewport().setMinY(0);
-        graph.getViewport().setMaxY(8);
+        graph.getViewport().setMaxY(10);
         graph.getViewport().setXAxisBoundsManual(true);
         graph.getViewport().setMinX(1);
         graph.getViewport().setMaxX(12);
-        graph.getGridLabelRenderer().setNumVerticalLabels(9);
+        graph.getGridLabelRenderer().setNumVerticalLabels(11);
         graph.getGridLabelRenderer().setNumHorizontalLabels(12);
         graph.getViewport().setScrollable(false);
-        graph.setTitle("Switches");
-        graph.setTitleTextSize(40f);
-        graph.addSeries(series);
-    }
-
-    public void graphScales() {
-        GraphView graph = (GraphView) findViewById(R.id.scale_graph);
-
-        Cursor cursor = db.rawQuery("SELECT * FROM " + DatabaseHandler.TABLE_MATCH + " WHERE " + DatabaseHandler.KEY_TEAMNUMBER_MATCH + " = " + teamNumber, null);
-        Cursor cursor1 = db.rawQuery("SELECT MAX(match) AS matches_max FROM " + DatabaseHandler.TABLE_MATCH + " WHERE " + DatabaseHandler.KEY_TEAMNUMBER_MATCH + " = " + teamNumber, null);
-        cursor1.moveToFirst();
-        int max_match = cursor1.getInt(cursor1.getColumnIndex("matches_max"));
-
-        dataset = new DataPoint[max_match];
-
-        int counter = 0;
-
-        while (cursor.moveToNext()) {
-            int scales = cursor.getInt(2);
-            int match = cursor.getInt(5);
-
-            dataset[counter] = new DataPoint(match, scales);
-            counter++;
-        }
-
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dataset);
-        series.setDrawDataPoints(true);
-        series.setDataPointsRadius(6);
-
-        graph.getViewport().setYAxisBoundsManual(true);
-        graph.getViewport().setMinY(0);
-        graph.getViewport().setMaxY(8);
-        graph.getViewport().setXAxisBoundsManual(true);
-        graph.getViewport().setMinX(1);
-        graph.getViewport().setMaxX(12);
-        graph.getGridLabelRenderer().setNumVerticalLabels(9);
-        graph.getGridLabelRenderer().setNumHorizontalLabels(12);
-        graph.getViewport().setScrollable(false);
-        graph.setTitle("Scales");
-        graph.setTitleTextSize(40f);
-        graph.addSeries(series);
-    }
-
-    public void graphVaults() {
-        GraphView graph = (GraphView) findViewById(R.id.vault_graph);
-
-        Cursor cursor = db.rawQuery("SELECT * FROM " + DatabaseHandler.TABLE_MATCH + " WHERE " + DatabaseHandler.KEY_TEAMNUMBER_MATCH + " = " + teamNumber, null);
-        Cursor cursor1 = db.rawQuery("SELECT MAX(match) AS matches_max FROM " + DatabaseHandler.TABLE_MATCH + " WHERE " + DatabaseHandler.KEY_TEAMNUMBER_MATCH + " = " + teamNumber, null);
-        cursor1.moveToFirst();
-        int max_match = cursor1.getInt(cursor1.getColumnIndex("matches_max"));
-
-        dataset = new DataPoint[max_match];
-
-        int counter = 0;
-
-        while (cursor.moveToNext()) {
-            int vaults = cursor.getInt(3);
-            int match = cursor.getInt(5);
-
-            dataset[counter] = new DataPoint(match, vaults);
-            counter++;
-        }
-
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dataset);
-        series.setDrawDataPoints(true);
-        series.setDataPointsRadius(6);
-
-        graph.getViewport().setYAxisBoundsManual(true);
-        graph.getViewport().setMinY(0);
-        graph.getViewport().setMaxY(8);
-        graph.getViewport().setXAxisBoundsManual(true);
-        graph.getViewport().setMinX(1);
-        graph.getViewport().setMaxX(12);
-        graph.getGridLabelRenderer().setNumVerticalLabels(9);
-        graph.getGridLabelRenderer().setNumHorizontalLabels(12);
-        graph.getViewport().setScrollable(false);
-        graph.setTitle("Vaults");
+        graph.setTitle("Cargo");
         graph.setTitleTextSize(40f);
         graph.addSeries(series);
     }
@@ -213,8 +135,8 @@ public class SingleTeamActivity extends AppCompatActivity {
         int counter = 0;
 
         while (cursor.moveToNext()) {
-            int climbs = cursor.getInt(4);
-            int match = cursor.getInt(5);
+            int climbs = cursor.getInt(8);
+            int match = cursor.getInt(9);
 
             dataset[counter] = new DataPoint(match, climbs);
             counter++;

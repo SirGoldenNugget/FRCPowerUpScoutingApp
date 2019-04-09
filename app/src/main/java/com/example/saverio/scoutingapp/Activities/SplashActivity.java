@@ -17,24 +17,23 @@ public class SplashActivity extends AppCompatActivity {
 
             public void run()
             {
-                try
-                {
-                    sleep(3000);
-                }
-                catch(InterruptedException e)
-                {
-                    e.printStackTrace();
-
-                }
-                finally
-                {
+//                try
+//                {
+//                    sleep(3000);
+//                }
+//                catch(InterruptedException e)
+//                {
+//                    e.printStackTrace();
+//
+//                }
+//                finally
+//                {
                     Intent openStartingPoint = new Intent("com.example.saverio.STARTINGPOINT");
                     startActivity(openStartingPoint);
-                }
+//                }
             }
-
-
         };
+
         timer.start();
     }
 

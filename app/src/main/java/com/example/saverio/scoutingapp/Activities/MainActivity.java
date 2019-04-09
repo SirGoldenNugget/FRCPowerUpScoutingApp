@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private DatabaseHandler db;
     private SimpleCursorAdapter dataAdapter;
-    private static final String[] types = {"Cubes", "Switches", "Scales", "Vaults", "Climbs"};
+    private static final String[] types = {"Points", "Hatches Both", "Hatches Lower", "Hatches Upper", "Cargo Both", "Cargo Lower", "Cargo Upper", "Sandstorm", "Endgame", "Search"};
     private static final String[] averages_totals = {"Averages", "Totals"};
 
     @Override
@@ -70,30 +70,46 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         String[] columns = new String[]{
                 DatabaseHandler.KEY_TEAMNUMBER,
-                DatabaseHandler.KEY_SWITCHES_TOTAL,
-                DatabaseHandler.KEY_SCALES_TOTAL,
-                DatabaseHandler.KEY_VAULTS_TOTAL,
-                DatabaseHandler.KEY_CLIMBS_TOTAL,
-                DatabaseHandler.KEY_CUBES_TOTAL,
-                DatabaseHandler.KEY_SWITCHES_AVERAGE,
-                DatabaseHandler.KEY_SCALES_AVERAGE,
-                DatabaseHandler.KEY_VAULTS_AVERAGE,
-                DatabaseHandler.KEY_CLIMBS_AVERAGE,
-                DatabaseHandler.KEY_CUBES_AVERAGE
+                DatabaseHandler.KEY_HATCHES_TOTAL,
+                DatabaseHandler.KEY_HATCHES_LOWER_TOTAL,
+                DatabaseHandler.KEY_HATCHES_UPPER_TOTAL,
+                DatabaseHandler.KEY_CARGO_TOTAL,
+                DatabaseHandler.KEY_CARGO_LOWER_TOTAL,
+                DatabaseHandler.KEY_CARGO_UPPER_TOTAL,
+                DatabaseHandler.KEY_SANDSTORM_TOTAL,
+                DatabaseHandler.KEY_ENDGAME_TOTAL,
+                DatabaseHandler.KEY_POINTS_TOTAL,
+                DatabaseHandler.KEY_HATCHES_AVERAGE,
+                DatabaseHandler.KEY_HATCHES_LOWER_AVERAGE,
+                DatabaseHandler.KEY_HATCHES_UPPER_AVERAGE,
+                DatabaseHandler.KEY_CARGO_AVERAGE,
+                DatabaseHandler.KEY_CARGO_LOWER_AVERAGE,
+                DatabaseHandler.KEY_CARGO_UPPER_AVERAGE,
+                DatabaseHandler.KEY_SANDSTORM_AVERAGE,
+                DatabaseHandler.KEY_ENDGAME_AVERAGE,
+                DatabaseHandler.KEY_POINTS_AVERAGE
         };
 
         int[] to = new int[]{
                 R.id.teamNumberTextView,
-                R.id.switchTotalTextView,
-                R.id.scaleTotalTextView,
-                R.id.vaultTotalTextView,
-                R.id.climbTotalTextView,
-                R.id.cubesTotalTextView,
-                R.id.switchAverageTextView,
-                R.id.scaleAverageTextView,
-                R.id.vaultAverageTextView,
-                R.id.climbAverageTextView,
-                R.id.cubesAverageTextView
+                R.id.hatchesTotalTextView,
+                R.id.hatchesLowerTotalTextView,
+                R.id.hatchesUpperTotalTextView,
+                R.id.cargoTotalTextView,
+                R.id.cargoLowerTotalTextView,
+                R.id.cargoUpperTotalTextView,
+                R.id.sandstormTotalTextView,
+                R.id.endgameTotalTextView,
+                R.id.pointsTotalTextView,
+                R.id.hatchesAverageTextView,
+                R.id.hatchesLowerAverageTextView,
+                R.id.hatchesUpperAverageTextView,
+                R.id.cargoAverageTextView,
+                R.id.cargoLowerAverageTextView,
+                R.id.cargoUpperAverageTextView,
+                R.id.sandstormAverageTextView,
+                R.id.endgameAverageTextView,
+                R.id.pointsAverageTextView
         };
 
         dataAdapter = new SimpleCursorAdapter(
@@ -114,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                 Intent intent = new Intent(MainActivity.this, SingleTeamActivity.class);
                 intent.putExtra("teamNumber", id_);
-                startActivity(intent);
+                 startActivity(intent);
             }
         });
     }
@@ -146,6 +162,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 break;
             case R.id.edit_menu:
                 startActivity(new Intent(MainActivity.this, EditActivity.class));
+                break;
+            case R.id.search_menu:
+//                startActivity(new Intent(MainActivity.this, SearchActivity.class));
                 break;
         }
         return false;

@@ -2,36 +2,62 @@ package Database;
 
 public class Team {
     private int teamNumber;
-    private int switches;
-    private int scales;
-    private int vaults;
-    private int climbs;
+    private int hatches_lower;
+    private int hatches_upper;
+    private int hatches_dropped;
+    private int cargo_lower;
+    private int cargo_upper;
+    private int sandstorm;
+    private int endgame;
 
-    public Team(int teamNumber, int switches, int scales, int vaults, int climbs) {
+    public Team(int teamNumber, int hatches_lower, int hatches_upper, int hatches_dropped, int cargo_lower, int cargo_upper, int sandstorm, int endgame) {
         this.teamNumber = teamNumber;
-        this.switches = switches;
-        this.scales = scales;
-        this.vaults = vaults;
-        this.climbs = climbs;
+        this.hatches_lower = hatches_lower;
+        this.hatches_upper = hatches_upper;
+        this.hatches_dropped = hatches_dropped;
+        this.cargo_lower = cargo_lower;
+        this.cargo_upper = cargo_upper;
+        this.sandstorm = sandstorm;
+        this.endgame = endgame;
     }
 
     public int getTeamNumber() {
         return teamNumber;
     }
 
-    public int getSwitches() {
-        return switches;
+    public int getHatches() {
+        return hatches_lower + hatches_upper;
     }
 
-    public int getScales() {
-        return scales;
+    public int getHatchesLower() {
+        return hatches_lower;
     }
 
-    public int getVaults() {
-        return vaults;
+    public int getHatchesUpper() {
+        return hatches_upper;
     }
 
-    public int getClimbs() {
-        return climbs;
+    public int getHatchesDropped() {
+        return hatches_dropped;
+    }
+
+    public int getCargo() {
+        return cargo_lower + cargo_upper;
+    }
+
+    public int getCargoLower() {
+        return cargo_lower;
+    }
+
+    public int getCargoUpper() {
+        return cargo_upper;
+    }
+
+    public int getSandstorm() {
+        return sandstorm;
+    }
+
+    public int getEndgame() {
+        return endgame;
     }
 }
